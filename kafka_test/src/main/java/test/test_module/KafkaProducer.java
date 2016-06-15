@@ -39,7 +39,8 @@ public class KafkaProducer extends Thread
         {
             String messageStr = new String("Message_" + messageNo);
             System.out.println("Send:" + messageStr);
-            producer.send(new KeyedMessage<Integer, String>(topic, messageStr));//这里没有传输key，只传输了topic和message
+            String key = messageNo + "";
+            producer.send(new KeyedMessage(topic,key, messageStr));//topic/key/message
             messageNo++;
             try {
                 sleep(3000);

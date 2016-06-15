@@ -1,5 +1,5 @@
-package test.test_module;
 
+package test.test_module;
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.FileInputStream;
@@ -40,11 +40,13 @@ public class KafkaConsumerProducerDemo
             //kafka消费数据
             if (strSimple.equals("false"))
             {
+            	System.out.println("enter high level api");
             	KafkaConsumer consumerThread = new KafkaConsumer(strTopic,strConsumerFilePath);
             	consumerThread.start();
             }
             else
             {
+            	System.out.println("enter low leve api");
             	SimpleKafkaConsumer SimpleConsumer = new SimpleKafkaConsumer();
             	SimpleConsumer.InitArgs(maxReads,strTopic,brokerhost,partition,port,SimpleConsumer);
             	SimpleConsumer.run();

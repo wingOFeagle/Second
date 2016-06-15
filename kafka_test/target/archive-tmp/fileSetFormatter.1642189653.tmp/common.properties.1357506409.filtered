@@ -1,0 +1,8 @@
+ProducerFilePath=
+ConsumerFilePath=
+topic=kafka-api-test
+Simple=true
+maxReads=1000
+partition=1
+brokerhost=10.10.239.172
+port=9092

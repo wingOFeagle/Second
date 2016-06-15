@@ -1,0 +1,5 @@
+test\test_module\KafkaProperties.class
+test\test_module\SimpleKafkaConsumer.class
+test\test_module\KafkaConsumerProducerDemo.class
+test\test_module\KafkaConsumer.class
+test\test_module\KafkaProducer.class
