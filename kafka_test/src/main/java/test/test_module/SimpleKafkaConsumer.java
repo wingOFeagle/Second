@@ -4,7 +4,7 @@ package test.test_module;
 import kafka.api.FetchRequest;
 import kafka.api.FetchRequestBuilder;
 import kafka.api.PartitionOffsetRequestInfo;
-import kafka.cluster.BrokerEndPoint;
+import kafka.cluster.Broker;
 import kafka.common.ErrorMapping;
 import kafka.common.TopicAndPartition;
 import kafka.javaapi.*;
@@ -12,38 +12,62 @@ import kafka.javaapi.consumer.SimpleConsumer;
 import kafka.message.MessageAndOffset;
  
 
+
+
+
+
 import java.nio.ByteBuffer;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import org.I0Itec.zkclient.ZkClient;
+
  
 public class SimpleKafkaConsumer extends Thread
 {
-    /*public static void main(String args[]) 
-    {
-        SimpleKafkaConsumer example = new SimpleKafkaConsumer();
-        long maxReads = Long.parseLong(args[0]);
-        String topic = args[1];
-        int partition = Integer.parseInt(args[2]);
-        List<String> seeds = new ArrayList<String>();
-        seeds.add(args[3]);
-        int port = Integer.parseInt(args[4]);
-        try {
-            example.run(maxReads, topic, partition, seeds, port);
-        } catch (Exception e) {
-            System.out.println("Oops:" + e);
-             e.printStackTrace();
-        }
-    }*/
 	private long m_maxReads;
 	private String m_topic;
 	private int m_partition;
 	private int m_port;
 	private String m_brokerhost;
 	private SimpleKafkaConsumer m_SimpleConsumer;
-	void InitArgs(long maxReads,String topic,String brokerhost,int partition,int port,SimpleKafkaConsumer SimpleConsumer)
+	private List<String> m_replicaBrokers = new ArrayList<String>();
+	
+	private ZkClient m_zkClient;
+	private String m_zkPath;
+	private ZkWatcher m_zkWatcher;
+	private SqlApi m_sqlApi;
+	private boolean m_mysqlUseful;
+	private boolean m_zkUseful;
+	
+	public SimpleKafkaConsumer(String strZkHost,int nZkConnectionTimeout,String strZkPath,String SqlHost, int SqlPort,String Database,String User, String Passwd,boolean zkUseful,boolean mysqlUseful)
+    {
+    	System.out.println("begin SimpleKafkaConsumer");
+        m_replicaBrokers = new ArrayList<String>();
+        m_zkPath = strZkPath;
+        m_mysqlUseful = mysqlUseful;
+        m_zkUseful = zkUseful;
+        //初始化zk节点
+        if(m_zkUseful)
+        {
+        	
+        	System.out.println("begin init zookeeper");
+        	m_zkWatcher = new ZkWatcher(strZkHost, nZkConnectionTimeout, strZkPath);
+        	m_zkClient = m_zkWatcher.GetzkClient();
+        }
+        //初始化msql
+        if(m_mysqlUseful)
+        {
+        	System.out.println("begin init mysql");
+        	m_sqlApi = new SqlApi(SqlHost, SqlPort, Database, User, Passwd);
+        }
+    }
+	
+	public void InitArgs(long maxReads,String topic,String brokerhost,int partition,int port,SimpleKafkaConsumer SimpleConsumer)
 	{
 		m_maxReads = maxReads;
 		m_topic = topic;
@@ -69,15 +93,8 @@ public class SimpleKafkaConsumer extends Thread
         	  m_SimpleConsumer.execute(m_maxReads, m_topic, m_partition, seeds, m_port);
         } catch (Exception e) {
             System.out.println("Oops:" + e);
-            
              e.printStackTrace();
         }
-    }
- 
-    private List<String> m_replicaBrokers = new ArrayList<String>();
- 
-    public SimpleKafkaConsumer() {
-        m_replicaBrokers = new ArrayList<String>();
     }
  
     public void execute(long a_maxReads, String a_topic, int a_partition, List<String> a_seedBrokers, int a_port) throws Exception 
@@ -100,14 +117,18 @@ public class SimpleKafkaConsumer extends Thread
  
         SimpleConsumer consumer = new SimpleConsumer(leadBroker, a_port, 100000, 64 * 1024, clientName);
         long readOffset = getLastOffset(consumer,a_topic, a_partition, kafka.api.OffsetRequest.EarliestTime(), clientName);
+        readOffset = 150;
  
         int numErrors = 0;
+        int CycleNum = 100;
+        int CNum = 100;
         while (a_maxReads > 0)
         {
             if (consumer == null) 
             {
                 consumer = new SimpleConsumer(leadBroker, a_port, 100000, 64 * 1024, clientName);
             }
+            //这里的readoffset指定起始的offset
             FetchRequest req = new FetchRequestBuilder()
                     .clientId(clientName)
                     .addFetch(a_topic, a_partition, readOffset, 100000) // Note: this fetchSize of 100000 might need to be increased if large batches are written to Kafka
@@ -134,8 +155,8 @@ public class SimpleKafkaConsumer extends Thread
                 continue;
             }
             numErrors = 0;
- 
             long numRead = 0;
+            //实际上如果生产的太慢的话，这个for循环经常空跑
             for (MessageAndOffset messageAndOffset : fetchResponse.messageSet(a_topic, a_partition)) 
             {
                 long currentOffset = messageAndOffset.offset();
@@ -146,21 +167,63 @@ public class SimpleKafkaConsumer extends Thread
                 }
                 readOffset = messageAndOffset.nextOffset();
                 ByteBuffer payload = messageAndOffset.message().payload();
- 
                 byte[] bytes = new byte[payload.limit()];
                 payload.get(bytes);
-                System.out.println(String.valueOf(messageAndOffset.offset()) + ": " + new String(bytes, "UTF-8"));
+                //System.out.println("Consume: " + String.valueOf(messageAndOffset.offset()) + ": " + new String(bytes, "UTF-8"));
+                //消费掉CycleNum数据后就存储一下offset的数据
+                CycleNum--;
+                if(CycleNum%5 == 0)
+                	System.out.print("CycleNum: " + CycleNum + "\n");
+                try
+                {
+	                if( CycleNum%100 == 0 )
+	                {
+	                	//System.out.println("CycleNum: " + CycleNum);
+	                	//向zk节点写数据
+	                	if(m_zkUseful)
+	                	{
+	                		System.out.println("Begin write to zookeeper");
+	                		System.out.println("Begin write to zookeeper");
+	                		System.out.println("Begin write to zookeeper");
+	                		String strOffset = Long.toUnsignedString(messageAndOffset.offset());
+	                    	byte[] byteOffset = strOffset.getBytes();
+	                    	m_zkClient.writeData(m_zkPath,byteOffset);
+	                    	System.out.println("写入路径" + m_zkPath + "数据：" + strOffset);
+	                	}
+	                	
+	                	//向mysql写数据
+	                	if(m_mysqlUseful)
+	                	{
+	                		System.out.println("Begin write to mysql");
+	                		System.out.println("Begin write to mysql");
+	                		System.out.println("Begin write to mysql");
+	                		Statement stmt= m_sqlApi.getStatement();
+	                    	String sql = String.format("insert into kafka_test(topic,partition_id,offset) values('%s',%d,%d);",a_topic,a_partition,a_partition);
+	                    	System.out.print("sql: " + sql);
+	                    	System.out.print("sql: " + sql);
+	                    	System.out.print("sql: " + sql);
+	                    	//stmt.execute(sql);
+	                    	//执行sql语句
+	                    	stmt.executeUpdate(sql);
+	                	}
+	                	CycleNum = CNum;
+                	}
+                }catch(Exception e){
+                	e.printStackTrace();}
                 numRead++;
                 a_maxReads--;
             }
- 
-            if (numRead == 0) 
+            //System.out.println("numRead:"+ numRead);
+            if(a_maxReads%100 == 0)
+            	System.out.println("a_maxReads:"+ a_maxReads);
+            
+       /*     if (numRead == 0) 
             {
                 try {
                     Thread.sleep(1000);
                 } catch (InterruptedException ie) {
                 }
-            }
+            }*/
         }
         if (consumer != null) 
         	consumer.close();
@@ -174,7 +237,6 @@ public class SimpleKafkaConsumer extends Thread
         kafka.javaapi.OffsetRequest request = new kafka.javaapi.OffsetRequest(
                 requestInfo, kafka.api.OffsetRequest.CurrentVersion(), clientName);
         OffsetResponse response = consumer.getOffsetsBefore(request);
- 
         if (response.hasError()) 
         {
             System.out.println("Error fetching data Offset Data the Broker. Reason: " + response.errorCode(topic, partition) );
@@ -229,17 +291,18 @@ public class SimpleKafkaConsumer extends Thread
                 for (TopicMetadata item : metaData) 
                 {
                 	System.out.println("SimpleApi item.topic: ["+ item.topic() + "]");
+                	//store basic info of one topic and partion
                     for (PartitionMetadata part : item.partitionsMetadata()) 
                     {
                         if (part.partitionId() == a_partition) 
                         {
                         	//isr服务
-                        	for (BrokerEndPoint isr:part.isr())
+                        	for (Broker isr:part.isr())
                         	{
                         		System.out.println("isr: host[ " + isr.host() + "]port[" + isr.port() + "]id" + isr.id() + "]");
                         	}
                         	System.out.println("leader: [host" + part.leader().host() + "]port[" + part.leader().port() + "]id[" + part.leader().id() + "]");
-                        	for (BrokerEndPoint replica: part.replicas())
+                        	for (Broker replica: part.replicas())
                         	{
                         		System.out.println("replica: [host" + replica.host() + "]port[" + replica.port() + "]id[" + replica.id() + "]");
                         	}
@@ -258,7 +321,7 @@ public class SimpleKafkaConsumer extends Thread
         if (returnMetaData != null) 
         {
             m_replicaBrokers.clear();
-            for (BrokerEndPoint replica : returnMetaData.replicas()) {
+            for (Broker replica : returnMetaData.replicas()) {
                 m_replicaBrokers.add(replica.host());
             }
         }

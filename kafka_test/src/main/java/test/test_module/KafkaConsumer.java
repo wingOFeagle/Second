@@ -47,8 +47,9 @@ public class KafkaConsumer extends Thread
     public void run() 
     {
         Map<String, Integer> topicCountMap = new HashMap<String, Integer>();
-        topicCountMap.put(topic, new Integer(1));
+        topicCountMap.put(topic, new Integer(1));//只用一个线程来进行消费
         Map<String, List<KafkaStream<byte[], byte[]>>> consumerMap = consumer.createMessageStreams(topicCountMap);
+      //获取其中一个kafka数据流,这里数据流的个数根据topicCountMap来进行指定，即用来进行消费的线程个数；这里只有一个线程，所以去其中一个
         KafkaStream<byte[], byte[]> stream = consumerMap.get(topic).get(0);
         ConsumerIterator<byte[], byte[]> it = stream.iterator();
         while (it.hasNext())

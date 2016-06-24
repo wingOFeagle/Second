@@ -1,5 +1,12 @@
 test\test_module\KafkaProperties.class
-test\test_module\SimpleKafkaConsumer.class
-test\test_module\KafkaConsumerProducerDemo.class
+test\test_module\RedisApi.class
+test\test_module\ZkWatcher.class
 test\test_module\KafkaConsumer.class
 test\test_module\KafkaProducer.class
+test\test_module\CountBolt.class
+test\test_module\SimpleKafkaConsumer.class
+test\test_module\SqlApi.class
+test\test_module\KafkaConsumerProducerMain.class
+test\test_module\StormApi.class
+test\test_module\ZkWatcher$1.class
+test\test_module\ClassifyBolt.class
