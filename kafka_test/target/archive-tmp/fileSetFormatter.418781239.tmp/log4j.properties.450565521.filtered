@@ -1,0 +1,84 @@
+log4j.rootLogger=INFO,stdout 
+log4j.appender.stdout=org.apache.log4j.ConsoleAppender 
+log4j.appender.stdout.layout=org.apache.log4j.PatternLayout 
+log4j.appender.stdout.layout.ConversionPattern=%d %p [%c] - %m%n 
+
+test.test_module.ClassifyBolt = INFO,ClassifyBolt
+log4j.appender.ClassifyBolt=org.apache.log4j.RollingFileAppender
+log4j.appender.ClassifyBolt.File=/root/file/kafka-test-release/log/ClassifyBolt.log
+log4j.appender.ClassifyBolt.MaxFileSize=128MB
+log4j.appender.ClassifyBolt.MaxBackupIndex=3
+log4j.appender.ClassifyBolt.layout=org.apache.log4j.PatternLayout
+log4j.appender.ClassifyBolt.layout.ConversionPattern=%d{yyyy-MM-dd HH:mm:ss} %-5p [%t] %c.%M(%L) - %m%n
+
+test.test_module.CountBolt = INFO,CountBolt
+log4j.appender.CountBolt=org.apache.log4j.RollingFileAppender
+log4j.appender.CountBolt.File=/root/file/kafka-test-release/log/CountBolt.log
+log4j.appender.CountBolt.MaxFileSize=128MB
+log4j.appender.CountBolt.MaxBackupIndex=3
+log4j.appender.CountBolt.layout=org.apache.log4j.PatternLayout
+log4j.appender.CountBolt.layout.ConversionPattern=%d{yyyy-MM-dd HH:mm:ss} %-5p [%t] %c.%M(%L) - %m%n
+
+test.test_module.KafkaConsumer = INFO,KafkaConsumer
+log4j.appender.KafkaConsumer=org.apache.log4j.RollingFileAppender
+log4j.appender.KafkaConsumer.File=/root/file/kafka-test-release/log/KafkaConsumer.log
+log4j.appender.KafkaConsumer.MaxFileSize=128MB
+log4j.appender.KafkaConsumer.MaxBackupIndex=3
+log4j.appender.KafkaConsumer.layout=org.apache.log4j.PatternLayout
+log4j.appender.KafkaConsumer.layout.ConversionPattern=%d{yyyy-MM-dd HH:mm:ss} %-5p [%t] %c.%M(%L) - %m%n
+
+test.test_module.KafkaConsumerProducerMain = INFO,KafkaConsumerProducerMain
+log4j.appender.KafkaConsumerProducerMain=org.apache.log4j.RollingFileAppender
+log4j.appender.KafkaConsumerProducerMain.File=/root/file/kafka-test-release/log/KafkaConsumerProducerMain.log
+log4j.appender.KafkaConsumerProducerMain.MaxFileSize=128MB
+log4j.appender.KafkaConsumerProducerMain.MaxBackupIndex=3
+log4j.appender.KafkaConsumerProducerMain.layout=org.apache.log4j.PatternLayout
+log4j.appender.KafkaConsumerProducerMain.layout.ConversionPattern=%d{yyyy-MM-dd HH:mm:ss} %-5p [%t] %c.%M(%L) - %m%n
+
+test.test_module.KafkaProducer = INFO,KafkaProducer
+log4j.appender.KafkaProducer=org.apache.log4j.RollingFileAppender
+log4j.appender.KafkaProducer.File=/root/file/kafka-test-release/log/KafkaProducer.log
+log4j.appender.KafkaProducer.MaxFileSize=128MB
+log4j.appender.KafkaProducer.MaxBackupIndex=3
+log4j.appender.KafkaProducer.layout=org.apache.log4j.PatternLayout
+log4j.appender.KafkaProducer.layout.ConversionPattern=%d{yyyy-MM-dd HH:mm:ss} %-5p [%t] %c.%M(%L) - %m%n
+
+test.test_module.RedisApi = INFO,RedisApi
+log4j.appender.RedisApi=org.apache.log4j.RollingFileAppender
+log4j.appender.RedisApi.File=/root/file/kafka-test-release/log/RedisApi.log
+log4j.appender.RedisApi.MaxFileSize=128MB
+log4j.appender.RedisApi.MaxBackupIndex=3
+log4j.appender.RedisApi.layout=org.apache.log4j.PatternLayout
+log4j.appender.RedisApi.layout.ConversionPattern=%d{yyyy-MM-dd HH:mm:ss} %-5p [%t] %c.%M(%L) - %m%n
+
+test.test_module.SimpleKafkaConsumer = INFO,SimpleKafkaConsumer
+log4j.appender.SimpleKafkaConsumer=org.apache.log4j.RollingFileAppender
+log4j.appender.SimpleKafkaConsumer.File=/root/file/kafka-test-release/log/SimpleKafkaConsumer.log
+log4j.appender.SimpleKafkaConsumer.MaxFileSize=128MB
+log4j.appender.SimpleKafkaConsumer.MaxBackupIndex=3
+log4j.appender.SimpleKafkaConsumer.layout=org.apache.log4j.PatternLayout
+log4j.appender.SimpleKafkaConsumer.layout.ConversionPattern=%d{yyyy-MM-dd HH:mm:ss} %-5p [%t] %c.%M(%L) - %m%n
+
+test.test_module.SqlApi = INFO,SqlApi
+log4j.appender.SqlApi=org.apache.log4j.RollingFileAppender
+log4j.appender.SqlApi.File=/root/file/kafka-test-release/log/SqlApi.log
+log4j.appender.SqlApi.MaxFileSize=128MB
+log4j.appender.SqlApi.MaxBackupIndex=3
+log4j.appender.SqlApi.layout=org.apache.log4j.PatternLayout
+log4j.appender.SqlApi.layout.ConversionPattern=%d{yyyy-MM-dd HH:mm:ss} %-5p [%t] %c.%M(%L) - %m%n
+
+test.test_module.StormApi = INFO,StormApi
+log4j.appender.StormApi=org.apache.log4j.RollingFileAppender
+log4j.appender.StormApi.File=/root/file/kafka-test-release/log/StormApi.log
+log4j.appender.StormApi.MaxFileSize=128MB
+log4j.appender.StormApi.MaxBackupIndex=3
+log4j.appender.StormApi.layout=org.apache.log4j.PatternLayout
+log4j.appender.StormApi.layout.ConversionPattern=%d{yyyy-MM-dd HH:mm:ss} %-5p [%t] %c.%M(%L) - %m%n
+
+test.test_module.ZkWatcher = INFO,ZkWatcher
+log4j.appender.ZkWatcher=org.apache.log4j.RollingFileAppender
+log4j.appender.ZkWatcher.File=/root/file/kafka-test-release/log/ZkWatcher.log
+log4j.appender.ZkWatcher.MaxFileSize=128MB
+log4j.appender.ZkWatcher.MaxBackupIndex=3
+log4j.appender.ZkWatcher.layout=org.apache.log4j.PatternLayout
+log4j.appender.ZkWatcher.layout.ConversionPattern=%d{yyyy-MM-dd HH:mm:ss} %-5p [%t] %c.%M(%L) - %m%n
