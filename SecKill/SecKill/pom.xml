@@ -28,6 +28,19 @@
 			<artifactId>jdq</artifactId>
 			<version>2.0.4-SNAPSHOT</version>
 		</dependency>
+
+		<dependency>
+			<groupId>com.jd.basedata</groupId>
+			<artifactId>info-calcu</artifactId>
+			<version>0.0.3-20160525.034516-1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>redis.clients</groupId>
+			<artifactId>jedis</artifactId>
+			<version>2.6.2</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>
@@ -88,7 +101,7 @@
 		<profile>
 			<id>test</id>
 			<properties>
-				<logpath>logs</logpath>
+				<logpath>/export/Logs/seckill.jd.local</logpath>
 				<!-- 日志告警级别 -->
 				<loglevel>INFO</loglevel>
 			</properties>

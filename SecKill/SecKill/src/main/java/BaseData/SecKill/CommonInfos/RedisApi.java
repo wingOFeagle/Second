@@ -1,4 +1,4 @@
-package redis_test;
+package BaseData.SecKill.CommonInfos;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -7,6 +7,7 @@ import org.apache.log4j.Logger;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolConfig;
+
 
 /**
  * Redis操作接口
@@ -17,8 +18,9 @@ import redis.clients.jedis.JedisPoolConfig;
 public class RedisApi
 {
 	private static JedisPool m_pool = null;
-	private String m_RedisHost;
+	private String m_RedisHost = Config.getM_strHostIp();
 	private int m_RedisPort = 6379;
+	private String m_RedisPasswd = "";
 	private static Log log = LogFactory.getLog(RedisApi.class);
 
 	/**
@@ -29,11 +31,9 @@ public class RedisApi
 	 * @return JedisPool
 	 */
 	// 构造函数
-	public RedisApi(String RedisHost, int RedisPort,String Password)
+	public RedisApi()
 	{
 		System.out.println("Begin ReisApi");
-		m_RedisHost = RedisHost;
-		m_RedisPort = RedisPort;
 		if (m_pool == null)
 		{
 			JedisPoolConfig config = new JedisPoolConfig();
@@ -47,11 +47,11 @@ public class RedisApi
 			// 在borrow一个jedis实例时，是否提前进行validate操作；如果为true，则得到的jedis实例均是可用的；
 			config.setTestOnBorrow(true);
 			int timeout = 1000 * 100;
-			m_pool = new JedisPool(config, m_RedisHost, m_RedisPort,timeout,Password);
+			m_pool = new JedisPool(config, m_RedisHost, m_RedisPort,timeout,m_RedisPasswd);
 		}
 	}
 
-	@SuppressWarnings({ "deprecation", "finally" })
+	@SuppressWarnings("finally")
 	public Jedis GetJedis()
 	{
 		String value = null;
@@ -74,5 +74,4 @@ public class RedisApi
 	{
 		return m_pool;
 	}
-	
 }
