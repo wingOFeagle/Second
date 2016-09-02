@@ -94,8 +94,8 @@ public class Sql_brand_goods
 						String sku_name = result.getString(2);
 						double jd_price = result.getDouble(3);
 						double promo_price = result.getDouble(4);
-						String start_time = result.getDate(5).toString();
-						String end_time = result.getDate(6).toString();
+						String start_time = result.getString(5);
+						String end_time = result.getString(6);
 						log.info("Sql_brand_goods|||" + sku_id + "|" + sku_name + "|" + jd_price + "|" + promo_price + "|" + start_time + "|" + end_time);
 						//格式化数据进行存储
 						String strKey = Long.toString(sku_id);

@@ -19,6 +19,7 @@ public class Config
 	private static int m_nRecvOrderDetailThreadNum;//并发接收orderdetal数据的线程数目
 	private static int m_nRecvOrderamountThreadNum;//并发接收orderamount数据的线程数目
 	private static int m_nRecvOrderamountexpandThreadNum;//并发接收orderamountexpand数据的线程数目
+	private static int m_nRedisExpireTLL;//设置redis key的有效过期时间
 	private static String m_strServerName;
 	private static int m_nServerId;
 	private static int m_nInterval;
@@ -91,6 +92,7 @@ public class Config
 		m_nRecvOrderDetailThreadNum = js.getInt("nRecvOrderDetailThreadNum");//接收线程数
 		m_nRecvOrderamountThreadNum = js.getInt("nRecvOrderamountThreadNum");//接收线程数
 		m_nRecvOrderamountexpandThreadNum = js.getInt("nRecvOrderamountexpandThreadNum");//接收线程数
+		m_nRedisExpireTLL = js.getInt("nRedisExpireTLL");
 		m_strServerName = js.getString("ServerName");
 		m_nServerId = js.getInt("ServerId");
 		m_nInterval = js.getInt("Interval");
@@ -103,6 +105,7 @@ public class Config
 		log.info("m_nRecvOrderDetailThreadNum: " + m_nRecvOrderDetailThreadNum);
 		log.info("m_nRecvOrderamountThreadNum: " + m_nRecvOrderamountThreadNum);
 		log.info("m_nRecvOrderamountexpandThreadNum: " + m_nRecvOrderamountexpandThreadNum);
+		log.info("m_nRedisExpireTLL: " + m_nRedisExpireTLL);
 		log.info("m_strServerName: " + m_strServerName);
 		log.info("m_nServerId: " + m_nServerId);
 		log.info("m_nInterval: " + m_nInterval);
@@ -134,6 +137,10 @@ public class Config
 	public static int getM_nRecvOrderamountexpandThreadNum()
 	{
 		return m_nRecvOrderamountexpandThreadNum;
+	}
+	public static int getM_nRedisExpireTLL()
+	{
+		return m_nRedisExpireTLL;
 	}
 	public static String getM_strServerName()
 	{

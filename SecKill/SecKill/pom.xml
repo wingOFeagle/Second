@@ -107,13 +107,5 @@
 			</properties>
 		</profile>
 
-		<profile>
-			<id>production</id>
-			<properties>
-				<logpath>/export/Logs/logInfoReport.jd.local</logpath>
-				<!-- 日志告警级别 -->
-				<loglevel>WARN</loglevel>
-			</properties>
-		</profile>
 	</profiles>
 </project>

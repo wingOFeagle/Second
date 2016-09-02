@@ -17,6 +17,10 @@ public class MapCache
 
 	// 如果有相同的key，那么进行value叠加;
 	// 在调试阶段我们输出，以验证是否有冲突的情况
+	public static Map GetMapCache()
+	{
+		return m_mapCache;
+	}
 	public static void InsertData(String key, String value)
 	{
 		try
@@ -24,7 +28,8 @@ public class MapCache
 			if (!m_mapCache.containsKey(key))
 			{
 				m_mapCache.put(key, value);
-			} else
+			} 
+			else
 			// 已经有这个sku_id了
 			{
 				// 硬编码的好处是可以及时发现不规范的错误；但缺点就是项目如果有变更那么修改的地方比较多
@@ -66,11 +71,10 @@ public class MapCache
 			}
 		} catch (Exception e)
 		{
-			log.error(e);
+			log.error("MapCache: InsertData" + e);
 		}
-
 	}
-	public void ClearData()
+	public static void ClearData()
 	{
 		TimerTask task = new TimerTask()
 		{
@@ -78,6 +82,7 @@ public class MapCache
 			public void run()
 			{
 				// TODO Auto-generated method stub
+				log.error("MapCache ClearData");
 				m_mapCache.clear();
 			}
 		};

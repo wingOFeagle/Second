@@ -1,6 +1,6 @@
 #!/bin/bash
 BASEDIR=/export/App/seckill.jd.local
-FEATURE=BaseData.SecKill.SeckillMain
+FEATURE=BaseData.SecKill.Main.SeckillMain
 ports=(66666)
 for port in ${ports[@]}
 do

@@ -3,6 +3,8 @@ import java.text.*;
 import java.util.Calendar;
 import java.util.Date;
 
+import org.apache.log4j.Logger;
+
 public class DateInterface
 {
 	
@@ -11,11 +13,13 @@ public class DateInterface
 	   * 
 	   * @return 返回时间类型 yyyy-MM-dd HH:mm:ss
 	   */
+	private static Logger log = Logger.getLogger("DateInterface");
 	public static String getNowDate()
 	{
 	   Date currentTime = new Date();
 	   SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	   String dateString = formatter.format(currentTime);
+	   log.info("Time now is :" + dateString);
 	   return dateString;
 	}
 /*	public static String getNowTime() throws InterruptedException

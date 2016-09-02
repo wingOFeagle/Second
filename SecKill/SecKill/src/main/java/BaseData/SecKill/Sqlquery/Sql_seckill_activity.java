@@ -82,7 +82,7 @@ public class Sql_seckill_activity
 				{
 					log.info("Begin to query data in Sql_seckill_activity");
 					String time_now = DateInterface.getNowDate();
-					String sql = String.format("select sku_id,product_name,jd_price,promo_price,start_date,end_date from cms_seckillactivity where status=2 and start_time <= '%s' and end_time >= '%s';",time_now,time_now);
+					String sql = String.format("select sku_id,product_name,jd_price,promo_price,start_date,end_date from cms_seckillactivity where status=2 and start_date <= '%s' and end_date >= '%s';",time_now,time_now);
 					log.info("Sql_seckill_activity sql: " + sql);
 					// stmt.execute(sql);
 					// 执行sql语句
@@ -94,8 +94,8 @@ public class Sql_seckill_activity
 						String sku_name = result.getString(2);
 						double jd_price = result.getDouble(3);
 						double promo_price = result.getDouble(4);
-						String start_time = result.getDate(5).toString();
-						String end_time = result.getDate(6).toString();
+						String start_time = result.getString(5);
+						String end_time = result.getString(6);
 						log.info("Sql_seckill_activity|||" + sku_id + "|" + sku_name + "|" + jd_price + "|" + promo_price + "|" + start_time + "|" + end_time);
 						//格式化数据进行存储
 						String strKey = Long.toString(sku_id);
