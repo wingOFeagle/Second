@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="../css/test.css">
+<link rel="stylesheet" type="text/css" href="../css/kechengdaohang.css">
+<link rel="stylesheet" type="text/css" href="../css/fudao.css">
+<link rel="stylesheet" type="text/css" href="../css/topHeader.css">
+<script type="text/javascript" src="../js/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="../js/test.js"></script>
+<title>这是一个测试页面</title>
+</head>
+<body>
+	<div class="topHeader" style="z-index: 999;">
+		<div class="wrap1000" style="position: relative;">
+			<!-- 首页漂浮广告 -->
+			<div id="floatAd" style="position: absolute; left: -125px; height: 283px; top: 398px;">
+				<div id="floatAd" style="position: absolute; height: 283px">
+					<a id="imgfloat"
+						href="http://web.xdf.cn/adv/index/adv?adv_hash=758b8747de94c71e033b0c2b034ffe76">
+						<img alt="漂浮广告" src="http://file.xdf.cn/new_www/20161114/op_58292dd474a99.jpeg">
+					</a>
+				</div>
+			</div>
+			<!-- 快速链接 S-->
+			<ul class="sg_tits2 fr">
+				<li class="allschool2" id="allschool2"><a href="http://www.xdf.cn/about/allcity.html"
+						target="_blank" id="allschoolid2" class="zyjs_sr_self">各地学校</a><em></em></li>
+				<li class="allorg2"><a class="" href="javascript:void(0)" id="allorgid2">子机构</a><em></em></li>
+				<li class="allorg3"><a class="" href="http://baoming.xdf.cn/Orders/OrderList.aspx">我的订单</a></li>
+				<li class="allorg3"><a class="" href="http://i.xdf.cn/">我的新东方</a></li>
+				<li class="guide2 floatR"><img
+					src="http://images.xdf.cn/cms20150819/xinbannew/img/gwc2.png" alt="">
+			</ul>
+			<!-- 快速链接 E-->
+			<!-- 登陆前状态 S-->
+			<div class="fl" id="loginF">
+				<!-- 选择去向 S-->
+				<div class="hasGone">
+					<form method="post" target="_self" name="login_form" id="login_form"
+						action="http://passport.xdf.cn/apis/users.ashx">
+						<!-- 登录前显示、登录后隐藏 S-->
+						<a href="http://localhost:8080/marven_test/html/login.html" class="hbtnA zyjs_sr_self"
+							target="_self" id="btn_login">请登录</a>
+						<a href="http://localhost:8080/marven_test/html/register.html" class="fl zyjs_sr_self hbtnA2"
+							id="registerLink">注册</a>
+					</form>
+				</div>
+				<!-- 选择去向 E-->
+				<p id="login_user_welcome"></p>
+			</div>
+			<!-- 登陆前状态 E-->
+			<!-- 登陆后状态 S-->
+			<div class="fl" id="loginL" style="display: none;">
+				<!-- 登陆后 -->
+				<span class="welcome2" id="welcomeText">您好，欢迎来到东方网</span>
+				<!-- 选择去向 S-->
+				<div class="hasGone">
+					<a href="http://passport.xdf.cn/Logout.aspx" class="hbtnA" id="logoutBtn" target="_self">退出</a>
+				</div>
+				<!-- 选择去向 E-->
+			</div>
+			<!-- 登陆后状态 E-->
+			<!-- 各地学校 S-->
+			<div style="display: none;" class="no sg_school2 zyjs_sr_special_gdxx">
+				<ul class="ul1">
+					<li><span>A</span><em><a href="#">鞍山</a></em></li>
+					<li><span>B</span><em><a href="#">北京</a> <a href="#">保定</a></em></li>
+					<li><span>C</span><em><a href="#">重庆</a> <a href="#">成都</a> <a href="#">长沙</a> <a
+								href="#">长春</a></em></li>
+					<li><span>D</span><em><a href="#">大连</a> <a href="#">多伦多</a></em></li>
+				</ul>
+				<ul class="ul2">
+					<li><span>L</span><em><a href="#">兰州</a> <a href="#">洛阳</a></em></li>
+					<li><span>N</span><em><a href="#">南京</a> <a href="#">南昌</a> <a href="#">南宁</a> <a
+								href="#">宁波</a> <a href="#">南通</a></em></li>
+					<li><span>Q</span><em><a href="#">青岛</a> <a href="#">泉州</a></em></li>
+					<li><span>S</span><em><a href="#">上海</a> <a href="#">沈阳</a> <a href="#">深圳</a> <a
+								href="#">石家庄</a> <a href="#">苏州</a> <a href="#">十堰</a></em></li>
+				</ul>
+			</div>
+			<!-- 各地学校 E-->
+			<!-- 子机构 S-->
+			<div style="display: none;" class="no sg_org2 zyjs_sr_special_zjg">
+				<ul>
+					<li><a href="#">新东方在线</a></li>
+					<li><a href="#">新东方大愚图书</a></li>
+					<li><a href="#">家庭教育中心</a></li>
+					<li><a href="#">新东方OKAY</a></li>
+					<li><a href="#">新东方百学汇</a></li>
+
+				</ul>
+				<ul>
+					<li><a href="#">满天星幼儿园</a></li>
+					<li><a href="#">迈格森国际教育</a></li>
+					<li><a href="#">泡泡少儿教育</a></li>
+					<li><a href="#">北京新东方外国语</a></li>
+
+				</ul>
+				<ul class="last">
+					<li><a href="#">前途出国</a></li>
+					<li><a href="#">国际游学</a></li>
+					<li><a href="#">酷学酷玩夏冬令营</a></li>
+
+				</ul>
+			</div>
+			<!-- 子机构 E-->
+		</div>
+	</div>
+	<div class="wrap1000">
+		<div class="thirdHead ">
+			<div class="nav_stand floatL " cid="1" style="z-index: 999;">
+				<div id="analysis" class="nav_stand borDF floatL">
+					<div class="nav_tit fix">
+						<strong class="hdTit font_msyh f-f0"><a href="#">课程导航</a></strong>
+					</div>
+					<dl class="dlList">
+						<dt></dt>
+						<!-- 定义表头 -->
+						<dd style="display: block;">
+							<h3>
+								<a href="#" target="_blank">
+									<strong>小学课程</strong>
+								</a>
+							</h3>
+							<div class="h3_cat">
+								<div class="cat_left" code="40">
+									<dl>
+										<dt>
+											<strong class="color_ls"><a target="_blank" href="#">一年级</a></strong>
+										</dt>
+										<dd>
+											<a target="_blank" href="#">英语</a>
+											<cite class="rM5">|</cite>
+											<a target="_blank" href="#">数学</a>
+											<cite class="rM5">|</cite>
+											<a target="_blank" href="#">语文</a>
+										</dd>
+									</dl>
+									<dl>
+										<dt>
+											<strong class="color_ls"><a target="_blank" href="#">二年级</a></strong>
+										</dt>
+										<dd>
+											<a target="_blank" href="#">英语</a>
+											<cite class="rM5">|</cite>
+											<a target="_blank" href="#">数学</a>
+											<cite class="rM5">|</cite>
+											<a target="_blank" href="#">语文</a>
+										</dd>
+									</dl>
+								</div>
+							</div>
+						</dd>
+						<dd style="display: block;">
+							<h3>
+								<a href="#" target="_blank">
+									<strong>中学课程</strong>
+								</a>
+							</h3>
+							<div class="h3_cat">
+								<div class="cat_left" code="414">
+									<dl>
+										<dt>
+											<strong class="color_ls"><a target="_blank" href="#">初一</a></strong>
+										</dt>
+										<dd>
+											<a target="_blank" href="#">英语</a>
+											<cite class="rM5">|</cite>
+											<a target="_blank" href="#">数学</a>
+											<cite class="rM5">|</cite>
+											<a target="_blank" href="#">语文</a>
+											<cite class="rM5">|</cite>
+										</dd>
+									</dl>
+									<dl>
+										<dt>
+											<strong class="color_ls"><a target="_blank" href="#">初二</a></strong>
+										</dt>
+										<dd>
+											<a target="_blank" href="#">英语</a>
+											<cite class="rM5">|</cite>
+											<a target="_blank" href="#">数学</a>
+											<cite class="rM5">|</cite>
+										</dd>
+									</dl>
+								</div>
+							</div>
+						</dd>
+						<dd style="display: block;">
+							<h3>
+								<a href="#" target="_blank">
+									<strong>大学考试</strong>
+								</a>
+							</h3>
+							<div class="h3_cat">
+								<div class="cat_left" code="20">
+									<dl>
+										<dt>
+											<strong class="color_ls"><a target="_blank" href="#">大学考级</a></strong>
+										</dt>
+										<dd>
+											<a target="_blank" href="#">四级</a>
+											<cite class="rM5">|</cite>
+											<a target="_blank" href="#">六级</a>
+											<cite class="rM5">|</cite>
+										</dd>
+									</dl>
+									<dl>
+										<dt>
+											<strong class="color_ls"><a target="_blank" href="#">大学预科</a></strong>
+										</dt>
+										<dd></dd>
+									</dl>
+								</div>
+							</div>
+						</dd>
+						<dd style="display: block;">
+							<h3>
+								<a href="#" target="_blank">
+									<strong>英语学习</strong>
+								</a>
+							</h3>
+							<div class="h3_cat">
+								<div class="cat_left" code="6">
+									<dl>
+										<dt>
+											<strong class="color_ls"><a target="_blank" href="#">新概念</a></strong>
+										</dt>
+										<dd>
+											<a target="_blank" href="#">小学生</a>
+											<cite class="rM5">|</cite>
+											<a target="_blank" href="#">初中生</a>
+											<cite class="rM5">|</cite>
+										</dd>
+									</dl>
+									<dl>
+										<dt>
+											<strong class="color_ls"><a target="_blank" href="#">听说读写拔高</a></strong>
+										</dt>
+										<dd>
+											<a target="_blank" href="#">高中生</a>
+											<cite class="rM5">|</cite>
+											<a target="_blank" href="#">成人</a>
+											<cite class="rM5">|</cite>
+										</dd>
+									</dl>
+								</div>
+							</div>
+						</dd>
+					</dl>
+				</div>
+			</div>
+			<div class="navR floatR ">
+				<div class="navw ">
+					<div class="navw">
+						<ul class="nav">
+							<li class="f-f0" id="xxfd"><a target="_blank" href="#">小学辅导</a></li>
+							<!-- 跳转到本页面顶部 -->
+							<li class="f-f0" id="zxfd"><a target="_blank" href="#">中学辅导</a></li>
+							<li class="f-f0" id="dxfd"><a target="_blank" href="#">大学辅导</a></li>
+							<li class="f-f0" id="yyfd"><a target="_blank" href="#">英语辅导</a></li>
+							<li class="f-f0" id="cgfd"><a target="_blank" href="#">出国留学</a></li>
+							<li class="f-f0" id="xxfd"><a target="_blank" href="#">名师查询</a></li>
+						</ul>
+
+					</div>
+					<div class="div_ptest">
+						<p class="nav_p">这是一个测试</p>
+					</div>
+				</div>
+			</div>
+			<button id="button1">click me</button>
+			<p id="button1_p">this is test</p>
+		</div>
+	</div>
+	<script type="text/javascript">
+		var name = GetQueryString("name");
+		if ((name.trim() == "") || (null == name) || (name.trim() == "null"))
+			;
+		else {
+			$("#login_user_welcome").html("欢迎您，" + name);
+			$("#btn_login").css({
+				"display" : "none"
+			});
+			$("#registerLink").css({
+				"display" : "none"
+			});
+		}
+	</script>
+</body>
+</html>

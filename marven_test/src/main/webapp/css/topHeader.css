@@ -1,0 +1,62 @@
+@CHARSET "UTF-8";
+
+.topHeader {
+	background: #f5f5f5;
+	border-bottom: 2px solid #0000ff;
+	height: 29px;
+	line-height: 28px;
+	position: relative;
+	z-index: 999
+}
+
+.topHeader a {
+	color: #ff00ff;
+}
+
+.topHeader p {
+	height: 28px;
+	line-height: 28px;
+}
+
+.topHeader .wrap1000 {
+	position: relative;
+	z-index: 2;
+}
+
+.wrap1000 {
+	margin: 0 auto;
+	width: 1000px;
+}
+
+.wrap1000, caption, th {
+	text-align: left;
+}
+
+.sg_tits2 {
+	color: #7f7f7f;
+	z-index: 7;
+	float: right;
+	position: relative;
+}
+
+ol, ul {
+	list-style: outside none none;
+}
+
+.sg_tits2 li {
+	float: left;
+	height: 28px;
+	padding: 1px 15px 0 8px;
+	position: relative;
+	z-index: 9;
+}
+
+.sg_tits2 li#allschool2 a {
+	display: inline;
+	float: left;
+	color: #ff00ff;
+}
+
+.fl, .hasGone, .hbtnA, .login, .selectBox, .sg_tits2 em, .topHeader .inp2, .welcome2 {
+	float: left;
+}

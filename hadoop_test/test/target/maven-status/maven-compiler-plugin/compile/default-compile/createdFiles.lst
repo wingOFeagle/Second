@@ -1,6 +1,0 @@
-hadoop\test\WordCount$Map.class
-hadoop\test\WordCountNew$TokenizerMapper.class
-hadoop\test\WordCount$Reduce.class
-hadoop\test\WordCountNew$IntSumReducer.class
-hadoop\test\WordCount.class
-hadoop\test\WordCountNew.class

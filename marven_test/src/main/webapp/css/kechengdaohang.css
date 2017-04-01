@@ -1,0 +1,172 @@
+@CHARSET "UTF-8";
+/*下面显示的是课程导航*/
+.nav_stand {
+	width: 131px;
+	height: 281px;
+	background: #38BCA4;
+	font-size: 12px;
+}
+
+.nav_stand .font_msyh {
+	background-color: #31a894;
+	display: block;
+	font-size: 16px;
+	font-weight: normal;
+	height: 40px;
+	line-height: 40px;
+	text-indent: 20px;
+	width: 131px;
+}
+
+.nav_stand .font_msyh a {
+	color: #fff;
+	display: block;
+	height: 40px;
+	text-decoration: none;
+	width: 131px;
+	font-size: 18px;
+}
+
+/* .nav_stand .nav_tit a i {
+	display: inline-block;
+	width: 11px;
+	height: 6px;
+	overflow: hidden;
+	background: url(icon.png) no-repeat 0 -44px;
+	position: absolute;
+	margin: 22px 0 0 5px;
+	-webkit-transition: all 0.5s ease 0s;
+	transition: all 0.5s ease 0s;
+	*margin-top: 10px;
+} */
+
+/* .nav_stand .nav_tit:hover a i {
+	transform: rotate(-180deg);
+}
+ */
+.nav_stand .nav_tit:hover .dlList {
+	display: block;
+	opacity: 1;
+}
+
+.nav_stand .nav_tit:hover .dlList {
+	display: block;
+	opacity: 1;
+}
+
+.dlList {
+	background-color: #38bca4;
+	position: relative;
+	z-index: 1000;
+}
+
+.dlList dd:hover h3 {
+	background: #ffff00;
+	margin-left: 1px;
+	position: relative;
+	width: 80px;
+	z-index: 10;
+}
+
+.dlList dd:hover h3 a {
+	color: red; /*#03a093;*/
+	margin-left: 5px; /*属性设置元素的左外边距。*/
+}
+/*
+.dlList dd:hover a {
+	color: #323232;
+}
+*/
+.dlList dd:hover .h3_cat {
+	display: block;
+	left: 131px;
+}
+
+.dlList h3 {
+	/*background: url("../img/index_bg.png") no-repeat 11px -37px;*/
+	color: #fffefe;
+	font-size: 14px;
+	height: 32px;
+	line-height: 32px;
+	margin: 5px 0;
+	padding-left: 20px;
+}
+
+.dlList h3 strong {
+	font-weight: bold;
+}
+
+.dlList h3 a {
+	color: #fff;
+	transition: all 0.3s ease 0s;
+}
+
+.dlList h3 a:hover {
+	color: #333;
+	text-decoration: none;
+}
+
+.h3_cat {
+	position: absolute;
+	top: 0px;
+	background: #fff;
+	left: 130px;
+	border: 1px solid #ffff00;
+	width: 221px;
+	display: none;
+	min-height: 279px;
+	_height: 279px;
+	-webkit-transition: 0.1s all ease 0.5s;
+	transition: 0.1s all ease 0.5s;
+}
+
+.h3_cat .cat_left {
+	margin: 10px 15px 30px;
+}
+
+.h3_cat .cat_left .color_ls {
+	color: #ff8080;
+}
+
+.h3_cat .cat_left dd {
+	color: #999;
+	line-height: 20px; /*行高*/
+	padding: 5px 0;
+}
+
+.h3_cat .cat_left dd a {
+	color: #999;
+	display: inline-block;
+	white-space: nowrap; /*规定段落中的文本不进行换行：*/
+}
+
+.h3_cat .cat_left dd a:hover {
+	color: #ff80c0;
+	text-decoration: blink;
+}
+
+/* .h3_cat .cat_left dd.noStrong {
+	padding-left: 0;
+} */
+.h3_cat .cat_left dt {
+	color: #323232;
+	font-size: 12px;
+	line-height: 16px;
+	margin-top: 8px;
+}
+
+.h3_cat .cat_left dt strong {
+	font-weight: normal;
+}
+
+.h3_cat .cat_left dt a {
+	color: #1eb694;
+}
+
+.h3_cat .cat_left dt a:hover {
+	color: #804040;
+}
+
+.h3_cat .cat_left dt strong {
+	font-weight: normal;
+}

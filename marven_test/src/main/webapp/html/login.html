@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript" src="../js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="../js/login.js"></script>
+<title>登录页面</title>
+</head>
+<body>
+	<form name="form1" method="post" action="/marven_test/Login1" id="form1">
+		<div class="p121-login-wrap">
+			<div class="p121-login-wrap-bg">
+				<div class="p121-login">
+					<div class="clearfix">
+						<p>请登录：</p>
+					</div>
+					<div class="mtop20"></div>
+					<div class="p121-login-block fz18">
+						<div class="p121-login-block-yzm">
+							<p>
+								<label class="tit">账号</label>
+								<input name="txtUser" type="text" id="txtUser" class="txt" placeholder="请输入手机/邮箱">
+							</p>
+							<p class="none">
+								<label class="tit">密码</label>
+								<input name="txtPwd" type="password" maxlength="20" id="txtPwd" class="txt"
+									placeholder="请输入密码">
+							</p>
+						</div>
+
+						<div style="height: 0px"></div>
+						<div>
+							<input type="submit" name="btnLogin" value="立即登录" onclick="return Verify();" id="btnLogin"
+								class="p121-login-btn">
+						</div>
+						<div style="display: none;"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
+</body>
+</html>

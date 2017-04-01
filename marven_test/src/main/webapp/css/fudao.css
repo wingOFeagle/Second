@@ -1,0 +1,53 @@
+@CHARSET "UTF-8";
+/*瀵艰埅*/
+.navR {
+	height: 300px;
+	width: 860px;
+}
+
+.navw {
+	border-bottom: 2px solid #00ff00;
+	height: 39px;
+	margin-bottom: 5px;
+	width: 860px;
+}
+
+.nav {
+	float: left;
+	height: 39px;
+	line-height: 39px;
+	width: 680px;
+	list-style-type: none;
+}
+
+.nav li {
+	float: left;
+	font-size: 18px;
+}
+
+.nav li a {
+	color: #282828;
+	display: inline-block;
+	height: 39px;
+	line-height: 39px;
+	padding: 0 20px;
+}
+
+.nav li a:hover {
+	background: #edf6f4;
+	color: #1eb694;
+}
+
+.navw .div_ptest {
+	height: 39px;
+}
+
+.div_ptest .nav_p {
+	margin: 20%, 30%, 20%, 30%;
+	background-color: #c0c0c0;
+	color: blue;
+	text-align: center;
+	letter-spacing: 1px;
+	line-height: 100%;
+	padding-bottom: 10px;
+}
